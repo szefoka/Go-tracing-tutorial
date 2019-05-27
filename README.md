@@ -29,7 +29,7 @@ This is for debian based computers, so maybe you need to issue the corresponding
 
 To be able to record your program's traces you shall insert some tracing related lines to your code, for this here is an example
 
-```
+```go
 package main
 
 import (
@@ -54,7 +54,7 @@ func main() {
 }
 ```
 This small program generates the trace.out file whic contains the program's trace, to visalize it issue the following:
-```
+```bash
 go tool trace -http <IP:GO_TOOL_TRACE_PORT> trace.out
 ```
 
@@ -63,12 +63,12 @@ go tool trace -http <IP:GO_TOOL_TRACE_PORT> trace.out
 pprof is for generating flamegraphs and for deeper examining of your code
 
 First you need to install pprof
-```
+```bash
 go get github.com/google/pprof
 ```
 
 To use pprof for generating more verbose output of your traces you shall copy the url of from the web UI of the go trace tool related to the questionable program trace and you can start examining it.
-```
+```bash
 pprof -http "IP:PORT" 'http://IP:GO_TOOL_TRACE_PORT/io?id=6436192&raw=1'
 ```
 
@@ -79,7 +79,7 @@ Before anything, you gotta extend your application to let go tool pprof accessin
 
 I've just stolen this code from Julia Evans' blog (she uses this to trace memory leaks)
 
-```
+```go
 package main
 
 import (
@@ -117,11 +117,11 @@ func leakyFunction(wg sync.WaitGroup) {
 ```
 
 After extending your application's code, you can start recording the running of your application by issuing the command below, which records the trace for 5 seconds
-```
+```bash
 go tool pprof localhost:6060/debug/pprof/profile?seconds=5
 ```
 From the output you can locate the the recorded profile of your application.
-```
+```bash
 Fetching profile over HTTP from http://localhost:6060/debug/pprof/profile?seconds=5
 Saved profile in /root/pprof/pprof.gows.samples.cpu.002.pb.gz
 File: gows
@@ -133,7 +133,7 @@ Entering interactive mode (type "help" for commands, "o" for options)
 Pressing Ctrl+D exits you from the command prompt
 To use webui of go tool pprof you need to issue the following command
 
-```
+```bash
 go tool pprof -http 0.0.0.0:8080 /root/pprof/pprof.gows.samples.cpu.002.pb.gz
 ```
 
