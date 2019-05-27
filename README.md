@@ -9,7 +9,7 @@ sudo apt-get update
 sudo apt-get install golang-go
 ```
 
-# go tool trace
+## go tool trace
 To make it up and running, download the go repository from github
 ```
 git clone https://github.com/golang/go.git
