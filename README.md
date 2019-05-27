@@ -10,13 +10,13 @@ sudo apt-get install golang-go
 ```
 
 # go tool trace
-To make it up and running:
-Download the go repository from github
+To make it up and running, download the go repository from github
 ```
 git clone https://github.com/golang/go.git
 ```
-step into the newly downloaded directory, and copy the misc directory to $(go env GOROOT)/
+Step into the newly downloaded directory, and copy the misc directory to $(go env GOROOT)/
 ```
+cd go/
 cp misc $(go env GOROOT)/
 ```
 Now you can see the order of goroutines and events running in your go program
@@ -55,7 +55,7 @@ func main() {
 ```
 This small program generates the trace.out file whic contains the program's trace, to visalize it issue the following:
 ```
-go tool trace -http <IP:PORT> trace.out
+go tool trace -http <IP:GO_TOOL_TRACE_PORT> trace.out
 ```
 
 ## pprof
@@ -69,7 +69,7 @@ go get github.com/google/pprof
 
 To use pprof for generating more verbose output of your traces you shall copy the url of from the web UI of the go trace tool related to the questionable program trace and you can start examining it.
 ```
-pprof -http "0.0.0.0:8081" 'http://hp045.utah.cloudlab.us:8080/io?id=6436192&raw=1'
+pprof -http "IP:PORT" 'http://IP:GO_TOOL_TRACE_PORT/io?id=6436192&raw=1'
 ```
 
 ## go tool pprof
