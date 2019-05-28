@@ -17,7 +17,7 @@ git clone https://github.com/golang/go.git
 Step into the newly downloaded directory, and copy the misc directory to $(go env GOROOT)/
 ```
 cd go/
-cp misc $(go env GOROOT)/
+cp -r misc $(go env GOROOT)/
 ```
 Now you can see the order of goroutines and events running in your go program
 
