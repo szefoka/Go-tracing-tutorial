@@ -74,7 +74,7 @@ pprof -http "IP:PORT" 'http://IP:GO_TOOL_TRACE_PORT/io?id=6436192&raw=1'
 
 ## go tool pprof
 
-go tool pprof is for profiling your application, you can check the CPU or memory consumtion of each function in the call tree. It also gives the facilty to visualize our traces on a fancy web UI
+go tool pprof is for profiling your application, you can check the CPU or memory consumption of each function in the call tree. It also gives the facilty to visualize our traces on a fancy web UI
 Before anything, you gotta extend your application to let go tool pprof accessing it.
 
 I've just stolen this code from Julia Evans' blog (she uses this to trace memory leaks)
